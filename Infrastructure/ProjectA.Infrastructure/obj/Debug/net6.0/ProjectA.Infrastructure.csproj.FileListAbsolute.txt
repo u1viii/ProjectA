@@ -1,0 +1,12 @@
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Infrastructure.deps.json
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Infrastructure.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Infrastructure.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.AssemblyInfo.cs
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\refint\ProjectA.Infrastructure.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ref\ProjectA.Infrastructure.dll

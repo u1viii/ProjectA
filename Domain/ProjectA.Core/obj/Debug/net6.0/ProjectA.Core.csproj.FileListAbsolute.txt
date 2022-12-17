@@ -1,0 +1,12 @@
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\bin\Debug\net6.0\ProjectA.Core.deps.json
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\bin\Debug\net6.0\ProjectA.Core.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\bin\Debug\net6.0\ProjectA.Core.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.csproj.AssemblyReference.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.AssemblyInfoInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.AssemblyInfo.cs
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.csproj.CoreCompileInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\refint\ProjectA.Core.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ProjectA.Core.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Core\obj\Debug\net6.0\ref\ProjectA.Core.dll

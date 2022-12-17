@@ -1,0 +1,15 @@
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\bin\Debug\net6.0\ProjectA.Application.deps.json
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\bin\Debug\net6.0\ProjectA.Application.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\bin\Debug\net6.0\ProjectA.Application.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.csproj.AssemblyReference.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.AssemblyInfoInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.AssemblyInfo.cs
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.csproj.CoreCompileInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\refint\ProjectA.Application.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ref\ProjectA.Application.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\bin\Debug\net6.0\ProjectA.Core.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\bin\Debug\net6.0\ProjectA.Core.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Domain\ProjectA.Application\obj\Debug\net6.0\ProjectA.Application.csproj.CopyComplete

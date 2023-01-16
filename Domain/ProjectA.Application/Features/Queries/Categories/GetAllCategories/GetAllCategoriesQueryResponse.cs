@@ -1,6 +1,6 @@
 ﻿using ProjectA.Core.Entities;
 
-namespace ProjectA.Application.Features.Queries.GetAllCategories
+namespace ProjectA.Application.Features.Queries.Categories.GetAllCategories
 {
     public class GetAllCategoriesQueryResponse
     {

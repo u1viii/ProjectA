@@ -142,6 +142,71 @@
         }
       }
     },
+    "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Infrastructure\\ProjectA.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Infrastructure\\ProjectA.Infrastructure.csproj",
+        "projectName": "ProjectA.Infrastructure",
+        "projectPath": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Infrastructure\\ProjectA.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Ülvi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Ülvi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Domain\\ProjectA.Application\\ProjectA.Application.csproj": {
+                "projectPath": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Domain\\ProjectA.Application\\ProjectA.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Persistance\\ProjectA.Persistance.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -264,6 +329,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Infrastructure\\ProjectA.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Infrastructure\\ProjectA.Infrastructure.csproj"
+              },
               "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Persistance\\ProjectA.Persistance.csproj": {
                 "projectPath": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Infrastructure\\ProjectA.Persistance\\ProjectA.Persistance.csproj"
               }
@@ -287,6 +355,14 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.2.2, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProjectA.Application;
+using ProjectA.Application.Abstractions.Services;
 using ProjectA.Application.Repositories;
 using ProjectA.Core.Entities.Identity;
 using ProjectA.Persistance.Context;
 using ProjectA.Persistance.Repositories;
+using ProjectA.Persistance.Services;
 
 namespace ProjectA.Persistance
 {
@@ -20,11 +22,16 @@ namespace ProjectA.Persistance
                 manager.SetBasePath(Path.Combine(Directory.GetCurrentDirectory(), "../../Presentation/ProjectA.API"));
                 manager.AddJsonFile("appsettings.json");
                 opt.UseSqlServer(manager.GetConnectionString("MSSql"));
-            }).AddIdentity<AppUser, IdentityRole<Guid>>()
+            }).AddIdentity<AppUser, IdentityRole<Guid>>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 5;
+            })
             .AddEntityFrameworkStores<ProjectADbContext>();
             services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
             services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
             services.AddScoped<IUnitOfWorks, UnitOfWorks>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }

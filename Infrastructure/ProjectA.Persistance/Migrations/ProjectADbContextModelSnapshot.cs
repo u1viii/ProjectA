@@ -34,7 +34,7 @@ namespace ProjectA.Persistance.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("CategoryProduct");
+                    b.ToTable("CategoryProduct", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -191,7 +191,7 @@ namespace ProjectA.Persistance.Migrations
 
                     b.HasIndex("Parent");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("ProjectA.Core.Entities.Identity.AppUser", b =>
@@ -289,7 +289,7 @@ namespace ProjectA.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("ProjectA.Core.Entities.Product", b =>
@@ -318,7 +318,7 @@ namespace ProjectA.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CategoryProduct", b =>

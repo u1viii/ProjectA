@@ -18,8 +18,4 @@
 	<Using Include="ProjectA.Core.Entities.Common" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Commands\" />
-  </ItemGroup>
-
 </Project>

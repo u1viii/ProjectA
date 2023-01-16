@@ -7,8 +7,7 @@ namespace ProjectA.Core.Entities
         public string Name { get; set; }
         public Guid? Parent { get; set; }
         [ForeignKey("Parent")]
-        public List<Category>? Children { get; set; }
-
-        public List<Product> Products { get; set; }
+        public ICollection<Category>? Children { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

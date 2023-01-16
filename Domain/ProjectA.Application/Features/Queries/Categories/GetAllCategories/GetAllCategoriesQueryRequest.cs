@@ -1,12 +1,6 @@
 ﻿using MediatR;
-using ProjectA.Application.RequestParameters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ProjectA.Application.Features.Queries.GetAllCategories
+namespace ProjectA.Application.Features.Queries.Categories.GetAllCategories
 {
     public class GetAllCategoriesQueryRequest:IRequest<GetAllCategoriesQueryResponse>
     {

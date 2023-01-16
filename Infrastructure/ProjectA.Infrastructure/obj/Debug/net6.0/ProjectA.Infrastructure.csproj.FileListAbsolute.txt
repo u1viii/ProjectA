@@ -10,3 +10,8 @@ C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\D
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\refint\ProjectA.Infrastructure.dll
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.pdb
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ref\ProjectA.Infrastructure.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Application.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Core.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Application.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\bin\Debug\net6.0\ProjectA.Core.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.Infrastructure\obj\Debug\net6.0\ProjectA.Infrastructure.csproj.CopyComplete

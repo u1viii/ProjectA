@@ -1,16 +1,16 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectA.Application;
-using ProjectA.Application.DTOs.Categories;
-using ProjectA.Application.Features.Queries.GetAllCategories;
-using ProjectA.Application.Repositories;
-using ProjectA.Application.RequestParameters;
-using ProjectA.Core.Entities;
+using ProjectA.Application.Features.Commands.Categories.CreateCategory;
+using ProjectA.Application.Features.Queries.Categories.GetAllCategories;
 
 namespace ProjectA.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class CategoriesController : Controller
     {
         readonly IUnitOfWorks _unitOfWorks;
@@ -32,20 +32,9 @@ namespace ProjectA.API.Controllers
             return Ok(await _unitOfWorks.CategoryReadRepository.GetByIdAsync(id));
         }
         [HttpPost]
-        public async Task<IActionResult> Post(DTO_CreateCategory category)
+        public async Task<IActionResult> Post(CreateCategoryCommandRequest request)
         {
-            
-            Category newCat = new Category
-            {
-                Name = category.Name,
-            };
-            if (category.ParentId != null &&
-                await _unitOfWorks.CategoryReadRepository.GetByIdAsync(category.ParentId) != null)
-            {
-                newCat.Parent = Guid.Parse(category.ParentId);
-            }
-            await _unitOfWorks.CategoryWriteRepository.AddAsync(newCat);
-            await _unitOfWorks.SaveChangesAsync();
+            await _mediator.Send(request);
             return Ok();
         }
         [HttpDelete]

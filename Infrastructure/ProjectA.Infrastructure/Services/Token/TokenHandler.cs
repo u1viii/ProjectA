@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using ProjectA.Application.Abstractions.Token;
 using ProjectA.Application.DTOs.Token;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace ProjectA.Infrastructure.Services.Token
@@ -30,7 +31,16 @@ namespace ProjectA.Infrastructure.Services.Token
                 signingCredentials: credentials);
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
             token.AccessToken = handler.WriteToken(securityToken);
+            token.RefreshToken = CreateRefreshToken();
             return token;
+        }
+
+        public string CreateRefreshToken()
+        {
+            byte[] bytes = new byte[32];
+            using RandomNumberGenerator random = RandomNumberGenerator.Create();
+            random.GetBytes(bytes);
+            return Convert.ToBase64String(bytes);
         }
     }
 }

@@ -10,5 +10,6 @@ namespace ProjectA.Application.DTOs.Token
     {
         public string AccessToken { get; set; }
         public DateTime Expires { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

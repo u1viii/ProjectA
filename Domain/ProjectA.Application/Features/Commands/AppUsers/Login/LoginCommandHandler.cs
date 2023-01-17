@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using ProjectA.Application.Abstractions.Token;
+using ProjectA.Application.DTOs.Token;
 using ProjectA.Application.Exceptions;
 using ProjectA.Application.Exceptions.UserExceptions;
 using ProjectA.Core.Entities.Identity;
@@ -35,9 +36,13 @@ namespace ProjectA.Application.Features.Commands.AppUsers.Login
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
             if (result.Succeeded)
             {
+                DTO_Token token = _token.CreateAccessToken(45);
+                user.RefreshTokenExpires = token.Expires.AddMinutes(15);
+                user.RefreshToken = token.RefreshToken;
+                await _userManager.UpdateAsync(user);
                 return new()
                 {
-                    Token = _token.CreateAccessToken(50)
+                    Token = token
                 };
             }
             throw new AuthenticationException();

@@ -28,5 +28,11 @@ namespace ProjectA.API.Controllers
             var response = await _mediator.Send(request);
             return Ok(response);
         }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> RefreshTokenLogin(LoginCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
     }
 }

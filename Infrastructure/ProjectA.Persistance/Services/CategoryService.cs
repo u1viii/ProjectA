@@ -2,6 +2,7 @@
 using ProjectA.Application;
 using ProjectA.Application.Abstractions.Services;
 using ProjectA.Application.DTOs.Categories;
+using ProjectA.Application.Exceptions.CategoryExceptions;
 using ProjectA.Core.Entities;
 using System;
 using System.Collections.Generic;
@@ -32,9 +33,12 @@ namespace ProjectA.Persistance.Services
             {
                 Name = createCategory.Name,
             };
-            if (createCategory.ParentId != null &&
-                await _unitOfWorks.CategoryReadRepository.GetByIdAsync(createCategory.ParentId) != null)
+            if (createCategory.ParentId != null)
             {
+                if (await _unitOfWorks.CategoryReadRepository.GetByIdAsync(createCategory.ParentId) == null)
+                {
+                    throw new CategoryNotFoundException();
+                }
                 newCat.Parent = Guid.Parse(createCategory.ParentId);
             }
             bool result = await _unitOfWorks.CategoryWriteRepository.AddAsync(newCat);

@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace ProjectA.Application.Exceptions.UserExceptions
 {
-    public class UserCreateFailedException : Exception
+    public class UserCreateFailedException : Exception, IBaseException
     {
-        public UserCreateFailedException() : base("Unexpected error happend when creating user")
+        public int StatusCode { get => StatusCodes.Status400BadRequest; }
+        public string ErrorMessage { get; }
+        public UserCreateFailedException() : base()
         {
+            ErrorMessage = "User yaradan zaman xeta bash verdi";
         }
 
         public UserCreateFailedException(string? message) : base(message)
         {
+            ErrorMessage = message;
         }
 
         public UserCreateFailedException(string? message, Exception? innerException) : base(message, innerException)
         {
+            ErrorMessage = message;
         }
     }
 }

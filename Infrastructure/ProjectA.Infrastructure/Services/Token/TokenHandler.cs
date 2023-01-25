@@ -2,7 +2,9 @@
 using Microsoft.IdentityModel.Tokens;
 using ProjectA.Application.Abstractions.Token;
 using ProjectA.Application.DTOs.Token;
+using ProjectA.Core.Entities.Identity;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -17,7 +19,7 @@ namespace ProjectA.Infrastructure.Services.Token
             _configuration = configuration;
         }
 
-        public DTO_Token CreateAccessToken(int minute)
+        public DTO_Token CreateAccessToken(int minute, AppUser user)
         {
             DTO_Token token = new DTO_Token();
             SymmetricSecurityKey securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Token:SigningKey"]));
@@ -26,9 +28,14 @@ namespace ProjectA.Infrastructure.Services.Token
             JwtSecurityToken securityToken = new JwtSecurityToken(
                 audience: _configuration["Token:Audience"],
                 issuer: _configuration["Token:Issuer"],
-                expires:token.Expires,
-                notBefore:DateTime.UtcNow,
-                signingCredentials: credentials);
+                expires: token.Expires,
+                notBefore: DateTime.UtcNow,
+                signingCredentials: credentials,
+                claims: new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Name, user?.UserName)
+                }
+            );
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
             token.AccessToken = handler.WriteToken(securityToken);
             token.RefreshToken = CreateRefreshToken();

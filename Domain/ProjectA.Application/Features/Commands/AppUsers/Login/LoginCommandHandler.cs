@@ -31,12 +31,13 @@ namespace ProjectA.Application.Features.Commands.AppUsers.Login
             AppUser user = await _userManager.FindByNameAsync(request.UsernameOrEmail);
             if (user == null)
                 user = await _userManager.FindByEmailAsync(request.UsernameOrEmail);
-            if (user == null)
+            if (user == null || !(await _userManager.CheckPasswordAsync(user, request.Password)))
                 throw new UserNotFoundException();
+           
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
             if (result.Succeeded)
             {
-                DTO_Token token = _token.CreateAccessToken(45);
+                DTO_Token token = _token.CreateAccessToken(45, user);
                 user.RefreshTokenExpires = token.Expires.AddMinutes(15);
                 user.RefreshToken = token.RefreshToken;
                 await _userManager.UpdateAsync(user);
@@ -44,6 +45,10 @@ namespace ProjectA.Application.Features.Commands.AppUsers.Login
                 {
                     Token = token
                 };
+            }
+            else
+            {
+                
             }
             throw new AuthenticationException();
         }

@@ -31,7 +31,7 @@ namespace ProjectA.Application.Features.Commands.AppUsers.RefreshTokenLogin
 
             if (user != null && user.RefreshTokenExpires > DateTime.UtcNow)
             {
-                DTO_Token token = _token.CreateAccessToken(45);
+                DTO_Token token = _token.CreateAccessToken(45, user);
                 user.RefreshTokenExpires = token.Expires.AddMinutes(15);
                 user.RefreshToken = token.RefreshToken;
                 await _userManager.UpdateAsync(user);

@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace ProjectA.Application.Exceptions.UserExceptions
 {
-    public class AuthenticationException:Exception
+    public class AuthenticationException:Exception, IBaseException
     {
-        public AuthenticationException():base("Girish zamani bir xeta bash verdi"){}
-
-        public AuthenticationException(string? message) : base(message)
+        public int StatusCode => StatusCodes.Status400BadRequest;
+        public string ErrorMessage { get; }
+        public AuthenticationException():base()
         {
+            ErrorMessage = "Girish zamani bir xeta bash verdi";
         }
 
-        public AuthenticationException(string? message, Exception? innerException) : base(message, innerException)
+        public AuthenticationException(string message) : base(message)
         {
+            ErrorMessage = message;
         }
+
+        public AuthenticationException(string message, Exception? innerException) : base(message, innerException)
+        {
+            ErrorMessage = message;
+        }
+
     }
 }

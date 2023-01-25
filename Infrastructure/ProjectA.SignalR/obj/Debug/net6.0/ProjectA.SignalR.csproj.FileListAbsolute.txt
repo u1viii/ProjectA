@@ -1,0 +1,12 @@
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\bin\Debug\net6.0\ProjectA.SignalR.deps.json
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\bin\Debug\net6.0\ProjectA.SignalR.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\bin\Debug\net6.0\ProjectA.SignalR.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.csproj.AssemblyReference.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.AssemblyInfoInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.AssemblyInfo.cs
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.csproj.CoreCompileInputs.cache
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\refint\ProjectA.SignalR.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ProjectA.SignalR.pdb
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Infrastructure\ProjectA.SignalR\obj\Debug\net6.0\ref\ProjectA.SignalR.dll

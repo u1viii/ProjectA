@@ -15,15 +15,18 @@ namespace ProjectA.API.Controllers
     {
         readonly IUnitOfWorks _unitOfWorks;
         readonly IMediator _mediator;
-        public CategoriesController(IUnitOfWorks unitOfWorks, IMediator mediator)
+        readonly ILogger<CategoriesController> _logger;
+        public CategoriesController(IUnitOfWorks unitOfWorks, IMediator mediator, ILogger<CategoriesController> logger)
         {
             _unitOfWorks = unitOfWorks;
             _mediator = mediator;
+            _logger = logger;
         }
 
         [HttpGet]
         public IActionResult Get([FromQuery]GetAllCategoriesQueryRequest request)
         {
+            _logger.LogInformation("hggasdf");
             return Ok(_mediator.Send(request));
         }
         [HttpGet("{id}")]
@@ -32,7 +35,7 @@ namespace ProjectA.API.Controllers
             return Ok(await _unitOfWorks.CategoryReadRepository.GetByIdAsync(id));
         }
         [HttpPost]
-        public async Task<IActionResult> Post(CreateCategoryCommandRequest request)
+        public async Task<IActionResult> Post([FromBody]CreateCategoryCommandRequest request)
         {
             await _mediator.Send(request);
             return Ok();

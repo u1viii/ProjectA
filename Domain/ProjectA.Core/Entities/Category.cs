@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using ProjectA.Core.Entities.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ProjectA.Core.Entities
 {
@@ -9,5 +10,6 @@ namespace ProjectA.Core.Entities
         [ForeignKey("Parent")]
         public ICollection<Category>? Children { get; set; }
         public ICollection<Product> Products { get; set; }
+        public ICollection<AppUserCategory> AppUserCategories { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
+using ProjectA.Application.Abstractions.Services;
+using ProjectA.Application.DTOs.AppUsers;
 using ProjectA.Application.Exceptions;
 using ProjectA.Core.Entities.Identity;
 
@@ -7,27 +9,33 @@ namespace ProjectA.Application.Features.Commands.AppUsers.CreateUser
 {
     public class CreateUserCommandHandler : IRequestHandler<CreateUserCommandRequest, CreateUserCommandResponse>
     {
-        readonly UserManager<AppUser> _userManager;
+        IUserService _userService { get; }
 
-        public CreateUserCommandHandler(UserManager<AppUser> userManager)
+        public CreateUserCommandHandler(IUserService userService)
         {
-            _userManager = userManager;
+            _userService = userService;
         }
 
         public async Task<CreateUserCommandResponse> Handle(CreateUserCommandRequest request, CancellationToken cancellationToken)
         {
-            IdentityResult result = await _userManager.CreateAsync(new AppUser { Name = request.Name, Surname = request.Surname, IsMale=request.IsMale, Email=request.Email, UserName=request.Username}, request.Password);
-            CreateUserCommandResponse response = new CreateUserCommandResponse() { Succeeded = result.Succeeded};
-            if (result.Succeeded)
-                response.Message = "User created";
-            else
+            await _userService.RegisterAsync(new DTO_UserRegister
             {
-                foreach (var item in result.Errors)
-                {
-                    response.Message += $"{item.Code} - {item.Description} <br>";
-                }
-            }
-            return response;
+                CategoryIds = request.CategoryIds,
+                Company = request.Company,
+                Email = request.Email,
+                IsCustomer = request.IsCustomer,
+                IsMale = request.IsMale,
+                IsSupplier = request.IsSupplier,
+                Name = request.Name,
+                Surname = request.Surname,
+                Number = request.Number,
+                Password = request.Password,
+                Position = request.Position,
+                RepeatPassword = request.RepeatPassword,
+                TIN = request.TIN,
+                Username = request.Username
+            });
+            return new();
             //throw new UserCreateFailedException();
         }
     }

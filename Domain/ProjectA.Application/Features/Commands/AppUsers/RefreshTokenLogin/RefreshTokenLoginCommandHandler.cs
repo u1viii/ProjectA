@@ -1,46 +1,24 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using ProjectA.Application.Abstractions.Token;
-using ProjectA.Application.DTOs.Token;
-using ProjectA.Application.Exceptions;
-using ProjectA.Core.Entities.Identity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectA.Application.Abstractions.Services;
+using ProjectA.Application.DTOs.AppUsers;
 
 namespace ProjectA.Application.Features.Commands.AppUsers.RefreshTokenLogin
 {
     public class RefreshTokenLoginCommandHandler : IRequestHandler<RefreshTokenLoginCommandRequest, RefreshTokenLoginCommandResponse>
     {
-        UserManager<AppUser> _userManager { get; }
-        ITokenHandler _token { get; }
+        IUserService _userService { get; }
 
-        public RefreshTokenLoginCommandHandler(ITokenHandler token, 
-            UserManager<AppUser> userManager)
+        public RefreshTokenLoginCommandHandler(IUserService userService)
         {
-            _token = token;
-            _userManager = userManager;
+            _userService = userService;
         }
 
         public async Task<RefreshTokenLoginCommandResponse> Handle(RefreshTokenLoginCommandRequest request, CancellationToken cancellationToken)
         {
-            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.RefreshToken == request.RefreshToken);
-
-            if (user != null && user.RefreshTokenExpires > DateTime.UtcNow)
+            return new()
             {
-                DTO_Token token = _token.CreateAccessToken(45, user);
-                user.RefreshTokenExpires = token.Expires.AddMinutes(15);
-                user.RefreshToken = token.RefreshToken;
-                await _userManager.UpdateAsync(user);
-                return new()
-                {
-                    Token = token
-                };
-            }
-            throw new UserNotFoundException();
+                Token = await _userService.RefreshTokenLoginAsync(new DTO_UserRefreshTokenLogin { RefreshToken = request.RefreshToken })
+            };
         }
     }
 }

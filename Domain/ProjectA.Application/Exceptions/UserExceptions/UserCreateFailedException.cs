@@ -11,12 +11,12 @@ namespace ProjectA.Application.Exceptions.UserExceptions
             ErrorMessage = "User yaradan zaman xeta bash verdi";
         }
 
-        public UserCreateFailedException(string? message) : base(message)
+        public UserCreateFailedException(string message) : base(message)
         {
             ErrorMessage = message;
         }
 
-        public UserCreateFailedException(string? message, Exception? innerException) : base(message, innerException)
+        public UserCreateFailedException(string message, Exception? innerException) : base(message, innerException)
         {
             ErrorMessage = message;
         }

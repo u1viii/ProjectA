@@ -168,6 +168,29 @@ namespace ProjectA.Persistance.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ProjectA.Core.Entities.AppUserCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("AppUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("AppUserCategory");
+                });
+
             modelBuilder.Entity("ProjectA.Core.Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
@@ -203,6 +226,10 @@ namespace ProjectA.Persistance.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<string>("Company")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -214,7 +241,13 @@ namespace ProjectA.Persistance.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsMale")
+                    b.Property<bool?>("IsCustomer")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsMale")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("IsSupplier")
                         .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
@@ -244,6 +277,9 @@ namespace ProjectA.Persistance.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Position")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("RefreshToken")
                         .HasColumnType("nvarchar(max)");
 
@@ -255,6 +291,9 @@ namespace ProjectA.Persistance.Migrations
 
                     b.Property<string>("Surname")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TIN")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -393,6 +432,25 @@ namespace ProjectA.Persistance.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProjectA.Core.Entities.AppUserCategory", b =>
+                {
+                    b.HasOne("ProjectA.Core.Entities.Identity.AppUser", "AppUser")
+                        .WithMany("AppUserCategories")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectA.Core.Entities.Category", "Category")
+                        .WithMany("AppUserCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("ProjectA.Core.Entities.Category", b =>
                 {
                     b.HasOne("ProjectA.Core.Entities.Category", null)
@@ -402,7 +460,14 @@ namespace ProjectA.Persistance.Migrations
 
             modelBuilder.Entity("ProjectA.Core.Entities.Category", b =>
                 {
+                    b.Navigation("AppUserCategories");
+
                     b.Navigation("Children");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.Identity.AppUser", b =>
+                {
+                    b.Navigation("AppUserCategories");
                 });
 #pragma warning restore 612, 618
         }

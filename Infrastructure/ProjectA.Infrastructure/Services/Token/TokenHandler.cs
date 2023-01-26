@@ -33,7 +33,7 @@ namespace ProjectA.Infrastructure.Services.Token
                 signingCredentials: credentials,
                 claims: new List<Claim>()
                 {
-                    new Claim(ClaimTypes.Name, user?.UserName)
+                    new Claim(ClaimTypes.Name, user.UserName)
                 }
             );
             JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();

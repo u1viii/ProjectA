@@ -20,7 +20,7 @@ namespace ProjectA.Application.Features.Commands.Categories.CreateCategory
 
         public async Task<CreateCategoryCommandResponse> Handle(CreateCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            await _categoryService.CreateCategoryAsync(new DTOs.Categories.DTO_CreateCategory { Name=request.Name, ParentId = request.ParentId});
+            await _categoryService.CreateAsync(new DTOs.Categories.DTO_CreateCategory { Name=request.Name, ParentId = request.ParentId});
             return new();
         }
     }

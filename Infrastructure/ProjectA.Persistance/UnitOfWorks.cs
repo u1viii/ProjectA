@@ -14,10 +14,28 @@ namespace ProjectA.Persistance
         {
             _dbContext = dbContext;
         }
-        public ICategoryReadRepository CategoryReadRepository => _categoryRead ?? new CategoryReadRepository(_dbContext);
-
-        public ICategoryWriteRepository CategoryWriteRepository =>_categoryWrite ?? new CategoryWriteRepository(_dbContext);
-
+        public ICategoryReadRepository CategoryReadRepository 
+        {
+            get
+            {
+                if (_categoryRead is null)
+                {
+                    _categoryRead = new CategoryReadRepository(_dbContext);
+                }
+                return _categoryRead;
+            }
+        }
+        public ICategoryWriteRepository CategoryWriteRepository
+        {
+            get
+            {
+                if (_categoryWrite is null)
+                {
+                    _categoryWrite = new CategoryWriteRepository(_dbContext);
+                }
+                return _categoryWrite;
+            }
+        }
         public async Task<int> SaveChangesAsync()
         {
             await _dbContext.SaveChangesAsync();

@@ -19,7 +19,7 @@ namespace ProjectA.Application.Features.Commands.Categories.RemoveCategory
 
         public async Task<RemoveCategoryCommandResponse> Handle(RemoveCategoryCommandRequest request, CancellationToken cancellationToken)
         {
-            await _categoryService.RemoveCategoryAsync(request.Id);
+            await _categoryService.RemoveAsync(request.Id);
             return new();
         }
     }

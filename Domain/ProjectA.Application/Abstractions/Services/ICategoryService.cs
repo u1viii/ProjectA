@@ -11,14 +11,15 @@ namespace ProjectA.Application.Abstractions.Services
 {
     public interface ICategoryService
     {
-        Task<bool> CreateCategoryAsync(DTO_CreateCategory createCategory);
-        Task<bool> CreateAllCategoryAsync(IEnumerable<DTO_CreateCategory> createCategories);
-        Task<bool> RemoveCategoryAsync(string id);
-        Task<bool> RemoveAllCategoriesAsync(IEnumerable<string> ids);
+        Task<bool> CreateAsync(DTO_CreateCategory createCategory);
+        Task<bool> CreateAllAsync(IEnumerable<DTO_CreateCategory> createCategories);
+        Task<bool> RemoveAsync(string id);
+        Task<bool> RemoveAllAsync(IEnumerable<string> ids);
         Task<bool> UpdateAsync(DTO_UpdateCategory updateCategory);
-        IQueryable<Category> GetAll();
-        IQueryable<Category> GetWhere(Expression<Func<Category, bool>> exp);
-        Task<Category> GetByIdAsync(string id);
-        Task<Category> GetSingleAsync(Expression<Func<Category, bool>> exp);
+        IQueryable<Category> GetAll(bool isTracking = false);
+        IQueryable<Category> GetWhere(Expression<Func<Category, bool>> exp, bool isTracking = false);
+        Task<Category> GetByIdAsync(string id, bool isTracking = false);
+        Task<Category> GetSingleAsync(Expression<Func<Category, bool>> exp, bool isTracking = false);
+        Task<bool> ContainsAsync(Expression<Func<Category, bool>> exp);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using ProjectA.Application;
 using ProjectA.Application.Abstractions.Services;
 using ProjectA.Application.DTOs.Categories;
@@ -22,12 +23,12 @@ namespace ProjectA.Persistance.Services
             _unitOfWorks = unitOfWorks;
         }
 
-        public Task<bool> CreateAllCategoryAsync(IEnumerable<DTO_CreateCategory> createCategories)
+        public Task<bool> CreateAllAsync(IEnumerable<DTO_CreateCategory> createCategories)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> CreateCategoryAsync(DTO_CreateCategory createCategory)
+        public async Task<bool> CreateAsync(DTO_CreateCategory createCategory)
         {
             Category newCat = new Category
             {
@@ -47,24 +48,23 @@ namespace ProjectA.Persistance.Services
         }
 
 
-        public Task<Category> GetByIdAsync(string id)
+        public Task<Category> GetByIdAsync(string id, bool isTracking = false)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Category> GetSingleAsync(Expression<Func<Category, bool>> exp)
+        public Task<Category> GetSingleAsync(Expression<Func<Category, bool>> exp, bool isTracking = false)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> RemoveAllCategoriesAsync(IEnumerable<string> ids)
+        public Task<bool> RemoveAllAsync(IEnumerable<string> ids)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> RemoveCategoryAsync(string id)
+        public async Task<bool> RemoveAsync(string id)
         {
-
             bool result = _unitOfWorks.CategoryWriteRepository.Remove(id);
             await _unitOfWorks.SaveChangesAsync();
             return result;
@@ -75,14 +75,14 @@ namespace ProjectA.Persistance.Services
             throw new NotImplementedException();
         }
 
-        public IQueryable<Category> GetAll()
-        {
-            return _unitOfWorks.CategoryReadRepository.GetAll();
-        }
+        public IQueryable<Category> GetAll(bool isTracking = false)
+            => _unitOfWorks.CategoryReadRepository.GetAll();
 
-        public IQueryable<Category> GetWhere(Expression<Func<Category, bool>> exp)
+        public IQueryable<Category> GetWhere(Expression<Func<Category, bool>> exp, bool isTracking = false)
+            => _unitOfWorks.CategoryReadRepository.GetWhere(exp);
+        public async Task<bool> ContainsAsync(Expression<Func<Category, bool>> exp)
         {
-            throw new NotImplementedException();
+            return await _unitOfWorks.CategoryReadRepository.Table.AnyAsync(exp);
         }
     }
 }

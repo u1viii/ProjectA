@@ -29,7 +29,16 @@ namespace ProjectA.API.Extensions
                         else if (contextFeatures.Error is InvalidOperationException)
                         {
                             statusCode = 400;
-                            message = "BadRequest";
+                            message = contextFeatures.Error.InnerException?.Message ?? "Bad Request";
+                        }
+                        else if (contextFeatures.Error is ArgumentNullException)
+                        {
+                            statusCode = 400;
+                            message = contextFeatures.Error.InnerException?.Message ?? "Argument is null";
+                        }
+                        else
+                        {
+                            message = contextFeatures.Error.InnerException?.Message ?? "Bad Request";
                         }
                         context.Response.StatusCode = statusCode;
                         logger.LogError(message);
@@ -37,7 +46,7 @@ namespace ProjectA.API.Extensions
                         {
                             StatusCode = statusCode,
                             ErrorMessage = message,
-                            Title = "Xeta bash verdi"
+                            Title = "Gozlenilmez xeta bash verdi"
                         }));
                     }
                 });

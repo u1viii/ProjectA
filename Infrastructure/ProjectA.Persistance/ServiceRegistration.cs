@@ -28,10 +28,23 @@ namespace ProjectA.Persistance
                 opt.Password.RequiredLength = 5;
             })
             .AddEntityFrameworkStores<ProjectADbContext>();
+
             services.AddScoped<ICategoryReadRepository, CategoryReadRepository>();
             services.AddScoped<ICategoryWriteRepository, CategoryWriteRepository>();
+            services.AddScoped<IOrderReadRepository, OrderReadRepository>();
+            services.AddScoped<IOrderWriteRepository, OrderWriteRepository>();
+            services.AddScoped<IPaymentReadRepository, PaymentReadRepository>();
+            services.AddScoped<IPaymentWriteRepository, PaymentWriteRepository>();
+            services.AddScoped<IProjectFileWriteRepository, ProjectFileWriteRepository>();
+            services.AddScoped<IProjectFileReadRepository, ProjectFileReadRepository>();
+            services.AddScoped<IOrderFileReadRepository, OrderFileReadRepository>();
+            services.AddScoped<IOrderFileWriteRepository, OrderFileWriteRepository>();
+
             services.AddScoped<IUnitOfWorks, UnitOfWorks>();
+
+            services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IPaymentService, PaymentService>();
             services.AddScoped<ICategoryService, CategoryService>();
         }
     }

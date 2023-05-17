@@ -9,6 +9,6 @@ namespace ProjectA.Application.Features.Commands.Categories.RemoveCategory
 {
     public class RemoveCategoryCommandRequest:IRequest<RemoveCategoryCommandResponse>
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
     }
 }

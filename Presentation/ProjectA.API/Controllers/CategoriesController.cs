@@ -26,7 +26,6 @@ namespace ProjectA.API.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]GetAllCategoriesQueryRequest request)
         {
-            _logger.LogInformation("hggasdf");
             return Ok(_mediator.Send(request));
         }
         [HttpGet("{id}")]

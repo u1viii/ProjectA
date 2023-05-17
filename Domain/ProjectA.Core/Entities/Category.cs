@@ -9,7 +9,7 @@ namespace ProjectA.Core.Entities
         public Guid? Parent { get; set; }
         [ForeignKey("Parent")]
         public ICollection<Category>? Children { get; set; }
-        public ICollection<Product> Products { get; set; }
+        public ICollection<OrderCategory>? OrderCategories { get; set; }
         public ICollection<AppUserCategory> AppUserCategories { get; set; }
     }
 }

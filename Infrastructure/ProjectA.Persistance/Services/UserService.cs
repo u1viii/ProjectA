@@ -39,11 +39,11 @@ namespace ProjectA.Persistance.Services
                 user = await _userManager.FindByEmailAsync(login.UsernameOrEmail);
                 if (user is null)
                 {
-                    throw new UserNotFoundException();
+                    throw new AuthenticationException("Login ve ya shifre yalnishdir");
                 }
             }
             if (!await _userManager.CheckPasswordAsync(user, login.Password))
-                throw new UserNotFoundException();
+                throw new AuthenticationException("Login ve ya shifre yalnishdir");
             var result = await _singInManager.PasswordSignInAsync(user, login.Password, true, true);
             if (!result.Succeeded)
             {
@@ -73,13 +73,13 @@ namespace ProjectA.Persistance.Services
             {
                 throw new UserCreateFailedException("Istifadechinin en az 1 rola sahib olmalidir");
             }
-            if (!await _categoryService.ContainsAsync(c=> register.CategoryIds.Contains(c.Id)))
+            if (!await _categoryService.ContainsAsync(c => register.CategoryIds.Contains(c.Id)))
             {
                 throw new CategoryNotFoundException();
             }
-            var categories = await _categoryService.GetWhere(c=>register.CategoryIds.Contains(c.Id)).ToListAsync();
+
             Collection<AppUserCategory> appUserCategories = new Collection<AppUserCategory>();
-            
+
             AppUser user = new AppUser
             {
                 Name = register.Name,
@@ -99,7 +99,7 @@ namespace ProjectA.Persistance.Services
                 appUserCategories.Add(new AppUserCategory { CategoryId = catId, AppUser = user });
             }
             user.AppUserCategories = appUserCategories;
-            var result = await _userManager.CreateAsync(user,register.Password);
+            var result = await _userManager.CreateAsync(user, register.Password);
             if (!result.Succeeded)
             {
                 throw new UserCreateFailedException();

@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using ProjectA.Core.Entities.Identity;
-
-namespace ProjectA.Application.Features.Commands.AppUsers.CreateUser
+﻿namespace ProjectA.Application.Features.Commands.AppUsers.CreateUser
 {
     public class CreateUserCommandResponse
     {

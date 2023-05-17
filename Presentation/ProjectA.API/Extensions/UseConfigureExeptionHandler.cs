@@ -19,6 +19,7 @@ namespace ProjectA.API.Extensions
                     context.Response.ContentType = MediaTypeNames.Application.Json;
                     if (contextFeatures != null)
                     {
+                        //TODO: switch-case`e cevir
                         int statusCode = 500;
                         string message = String.Empty;
                         if (contextFeatures.Error is IBaseException customEx)
@@ -29,16 +30,16 @@ namespace ProjectA.API.Extensions
                         else if (contextFeatures.Error is InvalidOperationException)
                         {
                             statusCode = 400;
-                            message = contextFeatures.Error.InnerException?.Message ?? "Bad Request";
+                            message = contextFeatures.Error.Message ?? contextFeatures.Error.InnerException?.Message ??"Bad Request";
                         }
                         else if (contextFeatures.Error is ArgumentNullException)
                         {
                             statusCode = 400;
-                            message = contextFeatures.Error.InnerException?.Message ?? "Argument is null";
+                            message = contextFeatures.Error.Message ?? contextFeatures.Error.InnerException?.Message ?? "Argument is null";
                         }
                         else
                         {
-                            message = contextFeatures.Error.InnerException?.Message ?? "Bad Request";
+                            message = contextFeatures.Error.Message ?? contextFeatures.Error.InnerException?.Message ?? "Bad Request";
                         }
                         context.Response.StatusCode = statusCode;
                         logger.LogError(message);

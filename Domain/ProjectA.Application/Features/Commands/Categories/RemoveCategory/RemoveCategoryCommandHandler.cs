@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using ProjectA.Application.Abstractions.Services;
+using ProjectA.Application.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,13 @@ namespace ProjectA.Application.Features.Commands.Categories.RemoveCategory
 {
     public class RemoveCategoryCommandHandler : IRequestHandler<RemoveCategoryCommandRequest, RemoveCategoryCommandResponse>
     {
-        readonly ICategoryService _categoryService;
+        ICategoryService _categoryService { get; }
+        ICategoryReadRepository _categoryReadRepository { get; }
 
-        public RemoveCategoryCommandHandler(ICategoryService categoryService)
+        public RemoveCategoryCommandHandler(ICategoryService categoryService, ICategoryReadRepository categoryReadRepository)
         {
             _categoryService = categoryService;
+            _categoryReadRepository = categoryReadRepository;
         }
 
         public async Task<RemoveCategoryCommandResponse> Handle(RemoveCategoryCommandRequest request, CancellationToken cancellationToken)

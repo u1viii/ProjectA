@@ -63,9 +63,11 @@ namespace ProjectA.Persistance.Services
             throw new NotImplementedException();
         }
 
-        public async Task<bool> RemoveAsync(string id)
+        public async Task<bool> RemoveAsync(Guid id)
         {
-            bool result = _unitOfWorks.CategoryWriteRepository.Remove(id);
+            if (!_unitOfWorks.CategoryReadRepository.Table.Any(c=>c.Id == id))
+                throw new CategoryNotFoundException();
+            bool result = _unitOfWorks.CategoryWriteRepository.Remove(id.ToString());
             await _unitOfWorks.SaveChangesAsync();
             return result;
         }

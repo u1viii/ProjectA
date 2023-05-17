@@ -13,7 +13,7 @@ namespace ProjectA.Application.Abstractions.Services
     {
         Task<bool> CreateAsync(DTO_CreateCategory createCategory);
         Task<bool> CreateAllAsync(IEnumerable<DTO_CreateCategory> createCategories);
-        Task<bool> RemoveAsync(string id);
+        Task<bool> RemoveAsync(Guid id);
         Task<bool> RemoveAllAsync(IEnumerable<string> ids);
         Task<bool> UpdateAsync(DTO_UpdateCategory updateCategory);
         IQueryable<Category> GetAll(bool isTracking = false);

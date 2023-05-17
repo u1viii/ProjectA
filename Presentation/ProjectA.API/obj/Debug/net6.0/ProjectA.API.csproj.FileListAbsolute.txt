@@ -101,3 +101,13 @@ C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\r
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\ProjectA.API.staticwebassets.runtime.json
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Api.Gax.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Api.Gax.Rest.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Apis.Storage.v1.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Cloud.Storage.V1.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Newtonsoft.Json.dll

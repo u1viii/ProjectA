@@ -11,7 +11,7 @@ namespace ProjectA.Application.Exceptions
     public class UserNotFoundException : Exception, IBaseException
     {
         public int StatusCode { get => StatusCodes.Status404NotFound; }
-        public string ErrorMessage { get; set; }
+        public string ErrorMessage { get; }
         
         public UserNotFoundException()
         {

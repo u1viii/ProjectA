@@ -9,5 +9,6 @@
         bool RemoveAll(List<T> items);
         bool Update(T item);
         bool UpdateAll(List<T> items);
+        Task<int> SaveChangesAsync();
     }
 }

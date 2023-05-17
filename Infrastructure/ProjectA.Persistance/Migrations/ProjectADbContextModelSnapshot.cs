@@ -17,25 +17,10 @@ namespace ProjectA.Persistance.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.12")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("CategoryProduct", b =>
-                {
-                    b.Property<Guid>("CategoriesId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ProductsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("CategoriesId", "ProductsId");
-
-                    b.HasIndex("ProductsId");
-
-                    b.ToTable("CategoryProduct");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
                 {
@@ -188,7 +173,7 @@ namespace ProjectA.Persistance.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("AppUserCategory");
+                    b.ToTable("AppUserCategories");
                 });
 
             modelBuilder.Entity("ProjectA.Core.Entities.Category", b =>
@@ -200,15 +185,15 @@ namespace ProjectA.Persistance.Migrations
                     b.Property<DateTime?>("CreatedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid?>("Parent")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
@@ -316,6 +301,74 @@ namespace ProjectA.Persistance.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("ProjectA.Core.Entities.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeadLine")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Manufacturer")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("PaymentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PaymentId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("OrderCategories");
+                });
+
             modelBuilder.Entity("ProjectA.Core.Entities.Payment", b =>
                 {
                     b.Property<Guid>("Id")
@@ -325,19 +378,19 @@ namespace ProjectA.Persistance.Migrations
                     b.Property<DateTime?>("CreatedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedTime")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedTime")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("ProjectA.Core.Entities.Product", b =>
+            modelBuilder.Entity("ProjectA.Core.Entities.ProjectFile", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -346,39 +399,54 @@ namespace ProjectA.Persistance.Migrations
                     b.Property<DateTime?>("CreatedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DeletedTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Detail")
+                    b.Property<string>("Discriminator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Note")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("Path")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Storage")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("ProjectFiles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("ProjectFile");
                 });
 
-            modelBuilder.Entity("CategoryProduct", b =>
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderFile", b =>
                 {
-                    b.HasOne("ProjectA.Core.Entities.Category", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasBaseType("ProjectA.Core.Entities.ProjectFile");
 
-                    b.HasOne("ProjectA.Core.Entities.Product", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasDiscriminator().HasValue("OrderFile");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderDocumentFile", b =>
+                {
+                    b.HasBaseType("ProjectA.Core.Entities.OrderFile");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasDiscriminator().HasValue("OrderDocumentFile");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderImageFile", b =>
+                {
+                    b.HasBaseType("ProjectA.Core.Entities.OrderFile");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasDiscriminator().HasValue("OrderImageFile");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
@@ -458,16 +526,79 @@ namespace ProjectA.Persistance.Migrations
                         .HasForeignKey("Parent");
                 });
 
+            modelBuilder.Entity("ProjectA.Core.Entities.Order", b =>
+                {
+                    b.HasOne("ProjectA.Core.Entities.Payment", "Payment")
+                        .WithMany()
+                        .HasForeignKey("PaymentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Payment");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderCategory", b =>
+                {
+                    b.HasOne("ProjectA.Core.Entities.Category", "Category")
+                        .WithMany("OrderCategories")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProjectA.Core.Entities.Order", "Order")
+                        .WithMany("OrderCategories")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderDocumentFile", b =>
+                {
+                    b.HasOne("ProjectA.Core.Entities.Order", "Order")
+                        .WithMany("OrderDocumentFiles")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.OrderImageFile", b =>
+                {
+                    b.HasOne("ProjectA.Core.Entities.Order", "Order")
+                        .WithMany("OrderImageFiles")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("ProjectA.Core.Entities.Category", b =>
                 {
                     b.Navigation("AppUserCategories");
 
                     b.Navigation("Children");
+
+                    b.Navigation("OrderCategories");
                 });
 
             modelBuilder.Entity("ProjectA.Core.Entities.Identity.AppUser", b =>
                 {
                     b.Navigation("AppUserCategories");
+                });
+
+            modelBuilder.Entity("ProjectA.Core.Entities.Order", b =>
+                {
+                    b.Navigation("OrderCategories");
+
+                    b.Navigation("OrderDocumentFiles");
+
+                    b.Navigation("OrderImageFiles");
                 });
 #pragma warning restore 612, 618
         }

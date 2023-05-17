@@ -35,7 +35,7 @@ namespace ProjectA.Persistance.Repositories
         }
 
         public bool Remove(string id)
-            =>Remove(Table.Find(id));
+            => Remove(Table.Find(id));
 
         public bool RemoveAll(List<T> items)
         {
@@ -53,6 +53,11 @@ namespace ProjectA.Persistance.Repositories
         {
             Table.UpdateRange(items);
             return true;
+        }
+        public async Task<int> SaveChangesAsync()
+        {
+            await _dbContext.SaveChangesAsync();
+            return 0;
         }
     }
 }

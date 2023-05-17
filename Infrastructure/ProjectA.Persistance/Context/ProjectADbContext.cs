@@ -12,9 +12,16 @@ namespace ProjectA.Persistance.Context
         public ProjectADbContext(DbContextOptions options):base(options)
         {
         }
-        public DbSet<Product> Products { get; set; } = null!;
         public DbSet<Payment> Payments { get; set; } = null!;
         public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Order> Order { get; set; } = null!;
+        public DbSet<OrderCategory> OrderCategories { get; set; } = null!;
+        public DbSet<ProjectFile> ProjectFiles { get; set; } = null!;
+        public DbSet<OrderFile> OrderFiles { get; set; } = null!;
+        public DbSet<OrderImageFile> OrderImageFiles { get; set; } = null!;
+        public DbSet<OrderDocumentFile> OrderDocumentFiles { get; set; } = null!;
+        public DbSet<AppUserCategory> AppUserCategories { get; set; } = null!;
+
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var datas =ChangeTracker.Entries<BaseEntity>();
@@ -23,8 +30,9 @@ namespace ProjectA.Persistance.Context
                 _ = data.State switch
                 {
                     EntityState.Added => data.Entity.CreatedTime = DateTime.UtcNow,
-                    EntityState.Deleted => data.Entity.DeletedTime = DateTime.UtcNow,
-                    EntityState.Unchanged => null
+                    EntityState.Modified => data.Entity.UpdatedTime = DateTime.UtcNow,
+                    EntityState.Unchanged => null,
+                    EntityState.Deleted => null
                 };
             }
             return base.SaveChangesAsync(cancellationToken);

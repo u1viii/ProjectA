@@ -4,6 +4,6 @@
     {
         public Guid Id { get; set; }
         public virtual DateTime? CreatedTime { get; set; }
-        public virtual DateTime? DeletedTime { get; set; }
+        public virtual DateTime? UpdatedTime { get; set; }
     }
 }

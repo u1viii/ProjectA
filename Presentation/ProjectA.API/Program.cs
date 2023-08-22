@@ -1,6 +1,7 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using ProjectA.API.Extensions;
 using ProjectA.Application;
 using ProjectA.Application.Features.Commands.Categories.CreateCategory;
 using ProjectA.Infrastructure;
@@ -78,7 +79,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-//app.UseConfigureExceptionHandler(app.Services.GetRequiredService<ILogger<Program>>());
+app.UseConfigureExceptionHandler(app.Services.GetRequiredService<ILogger<Program>>());
 app.UseCors();
 app.UseStaticFiles();
 app.UseHttpsRedirection();

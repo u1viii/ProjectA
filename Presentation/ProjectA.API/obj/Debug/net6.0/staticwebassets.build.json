@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "G06HszhUjjzZuBnw085X1PmcDt3ihO2HBEavK2ZJQ1Q=",
+  "Hash": "iIVM3xCZwVgb1wLLlGXJlZ2c3BVOAyTSTN0DjiApEsc=",
   "Source": "ProjectA.API",
   "BasePath": "_content/ProjectA.API",
   "Mode": "Default",
@@ -134,6 +134,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\imgs\\order\\face8ec900a04-186b-4758-88cf-5d8cd49ec1e7.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Presentation\\ProjectA.API\\wwwroot\\projecta-374812-b4dde5263f06.json",
+      "SourceId": "ProjectA.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ülvi\\Desktop\\DEV\\ProjectA\\Presentation\\ProjectA.API\\wwwroot\\",
+      "BasePath": "_content/ProjectA.API",
+      "RelativePath": "projecta-374812-b4dde5263f06.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\projecta-374812-b4dde5263f06.json"
     }
   ]
 }

@@ -111,3 +111,8 @@ C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\G
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Apis.Storage.v1.dll
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Google.Cloud.Storage.V1.dll
 C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\obj\Debug\net6.0\staticwebassets\msbuild.ProjectA.API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\obj\Debug\net6.0\staticwebassets\msbuild.build.ProjectA.API.props
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.ProjectA.API.props
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.ProjectA.API.props
+C:\Users\Ülvi\Desktop\DEV\ProjectA\Presentation\ProjectA.API\obj\Debug\net6.0\staticwebassets.pack.json

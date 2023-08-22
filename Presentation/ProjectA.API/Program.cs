@@ -4,12 +4,12 @@ using Microsoft.IdentityModel.Tokens;
 using ProjectA.Application;
 using ProjectA.Application.Features.Commands.Categories.CreateCategory;
 using ProjectA.Infrastructure;
-using ProjectA.Infrastructure.Services.Storage.GoogleCloud;
 using ProjectA.Infrastructure.Services.Storage.Local;
 using ProjectA.Persistance;
 using Serilog;
 using Serilog.Context;
 using Serilog.Sinks.MSSqlServer;
+using System.Collections.ObjectModel;
 using System.Security.Claims;
 using System.Text;
 
@@ -34,21 +34,21 @@ ColumnOptions options = new ColumnOptions();
     .MinimumLevel.Error()
     .WriteTo.Console()
     .WriteTo.File(Path.Combine("Logs", "Log-"+DateTime.UtcNow.ToString("dd-MM-yyyy")+".txt"))
-    //.WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("MSSql"),
-    //    sinkOptions: new MSSqlServerSinkOptions
-    //    {
-    //        TableName = "Logs",
-    //        AutoCreateSqlTable = true
-    //    }, columnOptions: new ColumnOptions()
-    //    {
-    //        AdditionalColumns = new Collection<SqlColumn>()
-    //        {
-    //            new SqlColumn
-    //            {
-    //                ColumnName = "Username", PropertyName="Username", DataType = System.Data.SqlDbType.VarChar
-    //            }
-    //        }
-    //    })
+    .WriteTo.MSSqlServer(builder.Configuration.GetConnectionString("MSSql"),
+        sinkOptions: new MSSqlServerSinkOptions
+        {
+            TableName = "Logs",
+            AutoCreateSqlTable = true
+        }, columnOptions: new ColumnOptions()
+        {
+            AdditionalColumns = new Collection<SqlColumn>()
+            {
+                new SqlColumn
+                {
+                    ColumnName = "Username", PropertyName="Username", DataType = System.Data.SqlDbType.VarChar
+                }
+            }
+        })
     .Enrich.FromLogContext()
     .CreateLogger();
 builder.Host.UseSerilog();
